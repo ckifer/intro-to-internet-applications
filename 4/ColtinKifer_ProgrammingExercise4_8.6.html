@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title>8.6</title>
+    <script>
+      // asl for amount of numbers to enter
+      var count = prompt("How many numbers would you like to enter?");
+      while (count <= 0){
+        count = prompt("Please enter a number greater than 0.");
+      }
+      // empty array
+      var nums = [];
+      // add numbers for as many as count
+      for (var i = 0; i < count; i++){
+        var num = Number(prompt("Enter a few non-negative numbers!"));
+        if (num >= 0)
+          nums.push(num);
+      }
+
+      // find min of array using spread operator
+      var min = Math.min(...nums);
+
+      // output
+      document.writeln( "<h1 style='color: blue;'>Numbers: </h1>" );
+      document.writeln( "<div style='color: red;'>" );
+      for (var i = 0; i < nums.length; i++){
+        if(i !== nums.length - 1)
+          document.writeln(nums[i] + ", " );
+        else
+          document.writeln(nums[i]);
+      }
+      document.writeln("</div>");
+
+      document.writeln( "<h1 style='color: navy;'>The min of these numbers is: " + min + "</h1>" );
+
+  </script>
+ </head>
+ <body></body>
+</html>

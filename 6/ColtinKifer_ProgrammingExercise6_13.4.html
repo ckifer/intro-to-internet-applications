@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>13.4 Simple Drawing Program</title>
+    <style>
+      td {
+        width: 4px;
+        height: 4px;
+      }
+      table {
+        width: 400px;
+        border-collapse: collapse;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .white {
+        background-color: #fff;
+      }
+    </style>
+    <script>
+      // A simple drawing program.
+      // initialization function to insert cells into the table
+      function createCanvas() {
+        var side = 100;
+        var tbody = document.getElementById("tablebody");
+
+        for (var i = 0; i < side; ++i) {
+          var row = document.createElement("tr");
+
+          for (var j = 0; j < side; ++j) {
+            var cell = document.createElement("td");
+            row.appendChild(cell);
+          } // end for
+
+          tbody.appendChild(row);
+          // register mousemove listener for the table
+          document
+            .getElementById("canvas")
+            .addEventListener("mousemove", processMouseMove, false);
+
+          var button = document.getElementById("clearBtn");
+          button.addEventListener("click", clear, false);
+        }
+      }
+      // end function createCanvas
+
+      // processes the onmousemove event
+      function processMouseMove(e) {
+        if (e.target.tagName.toLowerCase() == "td") {
+          // turn the cell blue if the Ctrl key is pressed
+          if (e.ctrlKey) {
+            e.target.setAttribute("class", "blue");
+          } // end if
+
+          // turn the cell red if the Shift key is pressed
+          if (e.shiftKey) {
+            e.target.setAttribute("class", "red");
+          } // end if
+
+          // add erase functionality
+          if (e.altKey) {
+            e.target.setAttribute("class", "white");
+          }
+        } // end if
+      } // end function processMouseMove
+
+      // erase functionality
+      function clear() {
+        var table = document.getElementsByTagName('table');
+        var cell = table[0].getElementsByTagName('td');
+        for (k = 0; k < cell.length; k++) {
+          cell[k].className = '';
+        }
+      }
+
+      window.addEventListener("load", createCanvas, false);
+    </script>
+  </head>
+  <body>
+    <caption>
+      Hold
+      <em>Ctrl</em>
+      (or
+      <em>Control</em
+      >) to draw blue. Hold
+      <em>Shift</em>
+      to draw red.
+    </caption>
+    <button type="button" id="clearBtn">Clear</button>
+    <table id="canvas">
+      <tbody id="tablebody"></tbody>
+    </table>
+  </body>
+</html>

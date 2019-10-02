@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>12.6 - Pick Color</title>
+    <!-- give myself a bootstrap container -->
+    <style>
+        input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        .container {
+          width: 50%;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto; 
+        }
+
+        #fontSelector {
+          margin-top: 1.5em;
+        }
+    </style>
+  </head>
+  <script>
+    var changeBtnOnClick = function() {
+      var value = document.getElementById("colorSelector").value;
+      var isColor = isCssColor(value);
+      if (isColor) {
+        document.body.style.background = value;
+      } else {
+        alert("invalid color!");
+      }
+    };
+
+    var selectOnChange = function(){
+      var value = document.getElementById("fontSelector").value;
+      document.body.style.fontFamily = value;
+    };
+
+    // helper function to check if the value is actually a css color
+    function isCssColor(strColor) {
+      var s = new Option().style;
+      s.color = strColor;
+      return s.color == strColor;
+    }
+  </script>
+  <body>
+    <h1 style="text-align: center">Color Picker</h1>
+    <div class="container" action="">
+      <label for="colorSelector">Enter a CSS color! (Name, rgb, or hex)</label>
+      <input
+        type="text"
+        name="colorSelector"
+        id="colorSelector"
+        placeholder="Enter a CSS color!"
+      />
+      <button type="button" onclick="changeBtnOnClick()">
+        Change Background Color!
+      </button>
+      <label for="fontSelector">Select a font!</label>
+      <select name="fontSelector" id="fontSelector" onchange="selectOnChange()">
+        <option value="Serif">Serif</option>
+        <option value="Sans-serif">Sans-serif</option>
+      </select>
+    </div>
+  </body>
+</html>

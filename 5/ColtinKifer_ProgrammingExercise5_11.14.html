@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>11.14</title>
+    <script>
+      function Count(){
+        var text = document.getElementById('text').value;
+        var arr = CountLetters(text);
+        OutputArray(arr);
+      }
+
+      function CountLetters(str){
+        var arr = [];
+        str = str.toLowerCase();
+        var letter = 'a';
+        while(letter <= 'z'){
+          var count = 0;
+          var index = str.indexOf(letter);
+          while(index != -1){
+            count++;
+            index = str.indexOf(letter ,index + 1);
+          }
+          arr.push(count);
+          letter = nextCharacter(letter);
+        }
+        return arr;
+    }
+
+    function nextCharacter(c) { 
+      return String.fromCharCode(c.charCodeAt(0) + 1); 
+  } 
+
+    function OutputArray(arr)
+    {
+      var output = document.getElementById('output');
+      output.value = 'Total number of letters in text: \n';
+      var letter = 'a';
+      var i = 0;
+      while(letter <= 'z'){
+        output.value += letter + '\t' + arr[i] + ' items \n'
+        i++;
+        letter = nextCharacter(letter);
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <h2>Count all letters in text box:</h2>
+    <div style="padding: .5em"><input type="button" value="Count" id="countBtn" onclick="Count()" /></div>
+    <div style="padding: .5em"><textarea id="text" cols="80" rows="25"> </textarea></div>
+    <h5>Output</h5>
+    <div style="padding: .5em"><textarea id="output" name="output" rows="10" cols="70"></textarea></div>
+  </body>
+</html>

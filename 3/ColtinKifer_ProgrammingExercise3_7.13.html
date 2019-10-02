@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.13</title>
+    <script type="text/javascript">
+      var items = [
+        {
+          item: 1,
+          value: 239.99,
+          quantity: 0
+        },
+        {
+          item: 2,
+          value: 129.75,
+          quantity: 0
+        },
+        {
+          item: 3,
+          value: 99.95,
+          quantity: 0
+        },
+        {
+          item: 4,
+          value: 350.89,
+          quantity: 0
+        }
+      ];
+      items[0].quantity = Number(window.prompt('Quantity of item 1 sold last week'));
+      items[1].quantity = Number(window.prompt('Quantity of item 2 sold last week'));
+      items[2].quantity= Number(window.prompt('Quantity of item 3 sold last week'));
+      items[3].quantity= Number(window.prompt('Quantity of item 4 sold last week'));
+    </script>
+  </head>
+  <body>
+    <div style="margin: 1.5em;">
+        <script type="text/javascript">
+          var sales = 0;
+          for(var i = 0; i < items.length; i++){
+            sales += items[i].value * items[i].quantity;
+          }
+          var pay = 200 + (sales * 0.09);
+          document.writeln('<h3>Salesman\'s pay for the week is $' + Math.round(pay * 100) / 100 + '</h3>')
+        </script>
+    </div>
+  </body>
+</html>

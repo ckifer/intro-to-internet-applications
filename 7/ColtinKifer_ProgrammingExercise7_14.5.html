@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>14.5 Shadow</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="600"></canvas>
+    <script>
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+
+      context.font = "18pt Helvetica";
+ 
+      context.shadowBlur = 6;
+      context.shadowColor = "gray";
+      context.shadowOffsetX = 2;
+      context.shadowOffsetY = 5;
+      context.fillText("HTML5 Canvas", 90, 160);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>14.6 Rounded Rect</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="600"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+
+      context.font = "18pt Helvetica";
+      roundedRect(context, 15, 5, 100, 200, 5);
+      roundedRect(context, 200, 200, 100, 200, 5);
+
+      function roundedRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(
+          x + width,
+          y + height,
+          x + width - radius,
+          y + height
+        );
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+        context.fillStyle = "yellow";
+        context.fill();
+        context.lineWidth = 6;
+        context.strokeStyle = "royalblue";
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>

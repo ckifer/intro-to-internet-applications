@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>9.7 Radius</title>
+    <script>
+      // click function
+      function calculateOnClick(){
+        var inputField = document.getElementById("radiusField");
+        var radius = parseFloat(inputField.value);
+        var result = document.getElementById( "result" );
+        result.innerHTML = "Circle area is: " + circleArea(radius);
+      }
+
+      // calculate area of a circle
+      function circleArea(radius){
+        return Math.PI * Math.pow(radius, 2);
+      }
+    </script>
+  </head>
+  <body>
+    <form id="myForm" action="#">
+      <p>
+        <label>Radius: <input id="radiusField" type="number"/></label>
+        <!-- use inline onclick function for this small example -->
+        <input id="calculateButton" type="button" value="Calculate" onclick="calculateOnClick()" />
+      </p>
+    </form>
+    <p id="result"></p>
+  </body>
+</html>

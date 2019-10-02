@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>11.13</title>
+    <script>
+      function Search(){
+        var text = document.getElementById('text').value;
+        var term = document.getElementById('searchTerm').value;
+        var count = CountString(text, term);
+        document.getElementById('result').innerText = 'There is/are ' + count + ' occurrence(s)!';
+      }
+
+      function CountString(str, search){
+        var count=0;
+        var index=str.indexOf(search);
+        while(index!=-1){
+            count++;
+            index=str.indexOf(search,index+1);
+        }
+        return count;
+    }
+    </script>
+  </head>
+  <body>
+    <h2>Enter some text and search for something in it:</h2>
+    <div style="padding: .5em"><input name="searchTerm" type="text" id="searchTerm"/></div>
+    <div style="padding: .5em"><input type="button" value="Search" id="searchBtn" onclick="Search()" /></div>
+    <div style="padding: .5em"><textarea id="text" cols="80" rows="25"> </textarea></div>
+    <div style="padding: .5em"><h4 id="result"></h4></div>
+  </body>
+</html>
